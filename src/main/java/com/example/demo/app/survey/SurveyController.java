@@ -20,6 +20,14 @@ import com.example.demo.service.survey.SurveyService;
 @RequestMapping("/survey")
 public class SurveyController {
 
+
+	public final SurveyService surveyService;
+	@Autowired
+	public SurveyController(SurveyService surveyService) {
+		this.surveyService = surveyService;
+	}
+
+
 	//アンケート入力画面
 	@GetMapping("/form")
 	public String form(Model model,SurveyForm surveyForm) {
@@ -28,12 +36,6 @@ public class SurveyController {
 		return "survey/survey";
 	}
 
-	//お問い合わせ一覧画面
-	public final SurveyService surveyService;
-	@Autowired
-	public SurveyController(SurveyService inquiryService) {
-		this.surveyService = inquiryService;
-	}
 
 	@GetMapping
 	public String index(Model model) {
@@ -42,7 +44,7 @@ public class SurveyController {
 		model.addAttribute("title","Survey Index");
 		model.addAttribute("surveyList", list);
 
-		return "survey/index";
+		return "survey/index_boot";
 	}
 
 	@PostMapping("/form")
