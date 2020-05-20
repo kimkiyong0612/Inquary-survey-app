@@ -33,7 +33,7 @@ public class SurveyController {
 	public String form(Model model,SurveyForm surveyForm) {
 		model.addAttribute("title","Survey Form");
 
-		return "survey/survey";
+		return "survey/form_boot";
 	}
 
 
@@ -51,7 +51,7 @@ public class SurveyController {
 	public String fromGoBack(SurveyForm surveyForm,Model model) {
 		model.addAttribute("title","Survey Form");
 
-		return "survey/survey";
+		return "survey/form_boot";
 	}
 
 	@PostMapping("/confirm")
@@ -60,10 +60,10 @@ public class SurveyController {
 			Model model) {
 		if(result.hasErrors()) {
 			model.addAttribute("title", "Survey Form");
-			return "survey/survey";
+			return "survey/form_boot";
 		}
 		model.addAttribute("title","Confirm Page");
-		return "survey/confirm";
+		return "survey/confirm_boot";
 
 	}
 
@@ -74,7 +74,7 @@ public class SurveyController {
 			RedirectAttributes redirectAttributes) {
 		if(result.hasErrors()) {
 			model.addAttribute("tittle","Survey Form");
-			return "survey/survey";
+			return "survey/form_boot";
 		}
 
 		Survey survey = new Survey();
