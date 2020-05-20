@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Insert title here</title>
+</head>
+<body>
+<div th:replace="~{block/header::headerA}"></div>
+<script type="text/javascript">
+      alert("死にてぇ");
+</script>
+<h1 th:text="${title}">仮のタイトル</h1>
+<p>入力内容をご確認ください</p>
+<!-- <p th:text="${inquiryForm.name}"></p>-->
+<div th:object="${surveyForm}">
+<p th:text="*{age}">age:</p>
+<p th:text="*{satisfaction}">satisfaction:</p>
+<p th:text="*{comment}">comment:</p>
+<form method="post" action="#" th:action="@{/survey/form}">
+	<input type="hidden" name="age" th:value="*{age}">
+	<input type="hidden" name="satisfaction" th:value="*{satisfaction}">
+	<input type="hidden" name="comment" th:value="*{comment}">
+	<input type="submit" value="Go Back">
+</form>
+<form method="post" action="#" th:action="@{/survey/complete}">
+	<input type="hidden" name="age" th:value="*{age}">
+	<input type="hidden" name="satisfaction" th:value="*{satisfaction}">
+	<input type="hidden" name="comment" th:value="*{comment}">
+	<input type="submit" value="Complete">
+</form>
+</div>
+</body>
+</html>
