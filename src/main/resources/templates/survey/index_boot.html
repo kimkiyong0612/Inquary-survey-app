@@ -65,12 +65,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr th:each="inquiry : ${inquiryList}">
-      <th scope="row" th:text="${inquiry.id}" >1</th>
-		<td th:text="${inquiry.name}">name</td>
-		<td th:text="${inquiry.email}">email</td>
-		<td th:text="${inquiry.contents}">contents</td>
-		<td th:text="${inquiry.created}">created</td>
+<tr th:each="survey : ${surveyList}">
+      <th scope="row" th:text="${survey.id}" >1</th>
+		<td th:text="${survey.age}"></td>
+		<td th:text="${survey.satisfaction}"></td>
+		<td th:text="${survey.comment}"></td>
+		<td th:text="${survey.created}"></td>
+		<tr th:each="inquiry : ${inquiryList}">
 	</tr>
   </tbody>
 </table>

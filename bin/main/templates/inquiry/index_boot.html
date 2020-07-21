@@ -65,7 +65,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr th:each="inquiry : ${inquiryList}">
+  <tr th:each="inquiry : ${inquiryList}">
       <th scope="row" th:text="${inquiry.id}" >1</th>
 		<td th:text="${inquiry.name}">name</td>
 		<td th:text="${inquiry.email}">email</td>

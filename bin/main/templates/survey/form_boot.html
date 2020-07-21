@@ -1,0 +1,103 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../../../favicon.ico">
+
+  <title>Starter Template for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="starter-template.css" th:href="@{/css/starter-template.css}" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <div th:replace="~{block/header::headerA}"></div>
+  <main role="main" class="container">
+
+    <div class="starter-template">
+      <h1 th:text="${title}">Bootstrap starter template</h1>
+      <p class="lead">お問い合わせ内容を入力してください</p>
+    </div>
+
+
+    <div th:unless="${#strings.isEmpty(complete)}" >
+		<div th:text="${complete}" class="alert alert-success" role="alert">
+		  A simple success alert?check it out!
+		</div>
+	</div>
+
+	<form method="post" action="#" th:action="@{/survey/confirm}" th:object="${surveyForm}">
+	  <div class="form-group">
+	    <label for="age">age</label>
+	    <input type="number" name="age" class="form-control" id="age" th:value="*{age}">
+	  </div>
+	  <div class="text-danger mb-4" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+
+	<label for="satisfaction">satisfaction:</label><br>
+	  1 <input id="satisfaction" name="satisfaction" type="radio" th:value="1" th:checked ="*{satisfaction == 1}"><br>
+	  2 <input id="satisfaction" name="satisfaction" type="radio" th:value="2" th:checked ="*{satisfaction == 1}"><br>
+	  3 <input id="satisfaction" name="satisfaction" type="radio" th:value="3" th:checked ="*{satisfaction == 1}"><br>
+	  4 <input id="satisfaction" name="satisfaction" type="radio" th:value="4" th:checked ="*{satisfaction == 1}"><br>
+	  5 <input id="satisfaction" name="satisfaction" type="radio" th:value="5" th:checked ="*{satisfaction == 1}"><br>
+	<div th:if="${#fields.hasErrors('satisfaction')}" th:errors="*{satisfaction}"></div>
+
+<!--
+  <div class="form-group">
+    <label for="satisfaction">satisfaction</label>
+    <select class="form-control" id="satisfaction" name="satisfaction">
+      <option th:value="1" th:checked="*{satisfaction == 1>1</option>
+      <option th:value="2" th:checked="*{satisfaction == 2>2</option>
+      <option th:value="3" th:checked="*{satisfaction == 3>3</option>
+      <option th:value="4" th:checked="*{satisfaction == 4>4</option>
+      <option th:value="5" th:checked="*{satisfaction == 5>5</option>
+    </select>
+  </div>
+	  <div class="text-danger mb-4" th:if="${#fields.hasErrors('satisfaction')}" th:errors="*{satisfaction}"></div>
+ -->
+
+	  <div class="form-group">
+	    <label for="comment">comment</label>
+	    <textarea  name="comment" class="form-control" id="comment" rows="3" th:field="*{comment}"></textarea>
+	  </div>
+	  <div class="text-danger mb-4" th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></div>
+
+	  <button type="submit" class="btn btn-primary">Confirm</button>
+
+<!--  bootstrap適用前
+<label for="age">age:</label>
+	<input id="age" name="age" type="number" th:value="*{age}"><br>
+	<div th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+
+	<label for="satisfaction">satisfaction:</label>
+	<input id="satisfaction" name="satisfaction" type="radio" th:value="1" th:checked ="*{satisfaction == 1}">1
+	<input id="satisfaction" name="satisfaction" type="radio" th:value="2" th:checked ="*{satisfaction == 1}">2
+	<input id="satisfaction" name="satisfaction" type="radio" th:value="3" th:checked ="*{satisfaction == 1}">3
+	<input id="satisfaction" name="satisfaction" type="radio" th:value="4" th:checked ="*{satisfaction == 1}">4
+	<input id="satisfaction" name="satisfaction" type="radio" th:value="5" th:checked ="*{satisfaction == 1}">5<br>
+	<div th:if="${#fields.hasErrors('satisfaction')}" th:errors="*{satisfaction}"></div>
+
+	<label for="comment">comment:</label>
+	<textarea name="comment" id="comment" rows="3" cols="40" th:field="*{comment}"></textarea><br>
+	<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}"></div>
+
+	<input type="submit" value="確認ページへ">
+-->
+	</form>
+    </main><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="@{/js/jquery-slim.min.js}"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"  th:src="@{/js/popper.min.js}"></script>
+    <script src="../../dist/js/bootstrap.min.js"  th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
